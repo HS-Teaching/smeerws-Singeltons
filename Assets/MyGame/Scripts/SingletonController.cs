@@ -1,5 +1,5 @@
-﻿/* simplest singelton implementation
- * this version of the singelton implementation has some issues:
+﻿/* simplest singleton implementation
+ * this version of the singleton implementation has some issues:
  * 1) Singleton is not persistent across the Unity scenes.
  * 2) All the executable code must be attached to GameObject in the hierarchy.
  * 3) It is not recommended to call SingletonController.Instance in any Awake() method because, since we don’t know the order that Awake() will be executed through all scripts, we can end up with a Null Reference Exception.
@@ -7,9 +7,9 @@
  */
  using UnityEngine;
 
-public class SingeltonController : MonoBehaviour {
+public class SingletonController : MonoBehaviour {
 
-    public static SingeltonController instance;
+    public static SingletonController instance;
 
     private void Awake()
     {

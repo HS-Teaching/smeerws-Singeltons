@@ -7,7 +7,7 @@
  */
 using UnityEngine;
 
-public class SingeltonControllerFixIssue4 : GenericSingeltonClass<SingeltonControllerFixIssue4> {
+public class SingletonControllerFixIssue4 : GenericSingletonClass<SingletonControllerFixIssue4> {
 
    
 }
