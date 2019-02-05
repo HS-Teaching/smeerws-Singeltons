@@ -1,9 +1,7 @@
-﻿/* simplest singleton implementation
- * this version of the singleton implementation has some issues:
+﻿/* This is the simplest singleton implementation, but it has some issues:
  * 1) Singleton is not persistent across the Unity scenes.
  * 2) All the executable code must be attached to GameObject in the hierarchy.
- * 3) It is not recommended to call SingletonController.Instance in any Awake() method because, since we don’t know the order that Awake() will be executed through all scripts, we can end up with a Null Reference Exception.
- * 4) This code works only for SingletonController Class, but if you want another singleton controller e.g., AudioController, we have to copy paste the same code to AudioController Class and do some minor changes to works, but this leads to boilerplate code.
+ * 3) Whenever we need a class to be a singlton we have to copy the singleton mechanic in Awake().
  */
  using UnityEngine;
 
@@ -11,14 +9,33 @@ public class SingletonController : MonoBehaviour {
 
     public static SingletonController instance;
 
+    private string name = "empty";
+
+    public string Name
+    {
+        get
+        {
+            Debug.Log("singletoncontroller get name " + name);
+            return name;
+        }
+
+        set
+        {
+            name = value;
+            Debug.Log("singletoncontroller name set to " + name);
+        }
+    }
+
     private void Awake()
     {
         if (instance != null)
         {
+            Debug.Log("Destroy SingeltonController " + gameObject.name);
             Destroy(gameObject);
         }
         else
         {
+            Debug.Log("Assign this instance SingeltonController " + gameObject.name);
             instance = this;
         }
     }

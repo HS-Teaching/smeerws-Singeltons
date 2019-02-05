@@ -28,19 +28,18 @@ public class SingeltonControllerFixIssue2and3 : MonoBehaviour {
             }
             return instance;
         }
-
     }
 
     private void Awake()
     {
-        if (instance == null)
+        if (instance != null)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 }

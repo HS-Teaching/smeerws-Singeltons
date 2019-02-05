@@ -5,8 +5,6 @@
  * 3) It is not recommended to call SingletonController.Instance in any Awake() method because, since we don’t know the order that Awake() will be executed through all scripts, we can end up with a Null Reference Exception.
  * 4) This code works only for SingletonController Class, but if you want another singleton controller e.g., AudioController, we have to copy paste the same code to AudioController Class and do some minor changes to works, but this leads to boilerplate code.
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GenericSingletonClass<T> : MonoBehaviour where T : Component {
